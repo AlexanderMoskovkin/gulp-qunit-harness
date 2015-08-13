@@ -22,6 +22,8 @@ async function fillResource (src, path) {
 export default function (options) {
     options = {
         basePath:          options.basePath || '',
+        port:              options.port,
+        crossDomainPort:   options.crossDomainPort,
         scripts:           options.scripts || [],
         css:               options.css || [],
         configApp:         options.configApp || null,
@@ -40,6 +42,12 @@ export default function (options) {
             .scripts(scripts)
             .css(css)
             .tests(tests);
+
+        if (typeof options.port === 'number')
+            qunitHarness.port(options.port);
+
+        if (typeof options.crossDomainPort === 'number')
+            qunitHarness.crossDomainPort(options.crossDomainPort);
 
         if (typeof options.configApp === 'function')
             qunitHarness.configApp(options.configApp);
