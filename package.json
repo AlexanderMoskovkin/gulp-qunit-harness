@@ -1,0 +1,33 @@
+{
+  "name": "gulp-qunit-harness",
+  "version": "0.1.0",
+  "description": "Gulp plugin for running qunit tests on a local machine and in the SauceLabs environment.",
+  "homepage": "https://github.com/AlexanderMoskovkin/gulp-qunit-harness",
+  "bugs": "https://github.com/AlexanderMoskovkin/gulp-qunit-harness/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Alexander Moskovkin",
+    "site": "https://github.com/AlexanderMoskovkin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexanderMoskovkin/gulp-qunit-harness.git"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "main": "./lib/index",
+  "dependencies": {
+    "babel-runtime": "^5.8.20",
+    "promise": "^7.0.4",
+    "qunit-harness": "^0.1.2",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.0.5",
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0",
+    "gulp-eslint": "^1.0.0"
+  }
+}
