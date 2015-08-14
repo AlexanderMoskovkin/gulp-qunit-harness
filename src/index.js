@@ -12,13 +12,6 @@ function hang () {
     });
 }
 
-async function fillResource (src, path) {
-    var content = await readFile(path, 'utf-8');
-
-    return { src, content };
-}
-
-
 export default function (options) {
     options = {
         basePath:          options.basePath || '',
@@ -34,13 +27,10 @@ export default function (options) {
     var qunitHarness = new QunitHarness();
 
     async function runTests () {
-        var scripts = await Promise.all(options.scripts.map(item => fillResource(item.src, item.path)));
-        var css     = await Promise.all(options.css.map(item => fillResource(item.src, item.path)));
-
         qunitHarness
             .fixtures(options.basePath)
-            .scripts(scripts)
-            .css(css)
+            .scripts(options.scripts)
+            .css(options.css)
             .tests(tests);
 
         if (typeof options.port === 'number')
