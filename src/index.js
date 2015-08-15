@@ -12,15 +12,14 @@ function hang () {
     });
 }
 
-export default function (options) {
-    options = {
-        basePath:          options.basePath || '',
-        port:              options.port,
-        crossDomainPort:   options.crossDomainPort,
-        scripts:           options.scripts || [],
-        css:               options.css || [],
-        configApp:         options.configApp || null,
-        saucelabsSettings: options.saucelabsSettings || null
+export default function (qunitSettings, saucelabsSettings) {
+    qunitSettings = {
+        basePath:        qunitSettings.basePath || '',
+        port:            qunitSettings.port,
+        crossDomainPort: qunitSettings.crossDomainPort,
+        scripts:         qunitSettings.scripts || [],
+        css:             qunitSettings.css || [],
+        configApp:       qunitSettings.configApp || null
     };
 
     var tests        = [];
@@ -28,24 +27,24 @@ export default function (options) {
 
     async function runTests () {
         qunitHarness
-            .fixtures(options.basePath)
-            .scripts(options.scripts)
-            .css(options.css)
+            .fixtures(qunitSettings.basePath)
+            .scripts(qunitSettings.scripts)
+            .css(qunitSettings.css)
             .tests(tests);
 
-        if (typeof options.port === 'number')
-            qunitHarness.port(options.port);
+        if (typeof qunitSettings.port === 'number')
+            qunitHarness.port(qunitSettings.port);
 
-        if (typeof options.crossDomainPort === 'number')
-            qunitHarness.crossDomainPort(options.crossDomainPort);
+        if (typeof qunitSettings.crossDomainPort === 'number')
+            qunitHarness.crossDomainPort(qunitSettings.crossDomainPort);
 
-        if (typeof options.configApp === 'function')
-            qunitHarness.configApp(options.configApp);
+        if (typeof qunitSettings.configApp === 'function')
+            qunitHarness.configApp(qunitSettings.configApp);
 
         qunitHarness.create();
 
-        if (options.saucelabsSettings) {
-            qunitHarness.saucelabs(options.saucelabsSettings);
+        if (saucelabsSettings) {
+            qunitHarness.saucelabs(saucelabsSettings);
             return await qunitHarness.run();
         }
 
