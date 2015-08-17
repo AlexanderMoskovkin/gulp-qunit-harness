@@ -1,6 +1,6 @@
 {
   "name": "gulp-qunit-harness",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Gulp plugin for running qunit tests on a local machine and in the SauceLabs environment.",
   "homepage": "https://github.com/AlexanderMoskovkin/gulp-qunit-harness",
   "bugs": "https://github.com/AlexanderMoskovkin/gulp-qunit-harness/issues",
@@ -20,7 +20,7 @@
   "dependencies": {
     "babel-runtime": "^5.8.20",
     "promise": "^7.0.4",
-    "qunit-harness": "^0.1.10",
+    "qunit-harness": "^0.1.11",
     "through2": "^2.0.0"
   },
   "devDependencies": {
