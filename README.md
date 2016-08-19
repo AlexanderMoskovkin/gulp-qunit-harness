@@ -8,6 +8,7 @@
 ##Usage
 ```js
 var qunitHarness = require('gulp-qunit-harness');
+var callbacks    = require('./test/callbacks');
 
 var CLIENT_TESTS_SETTINGS = {
     basePath:        './test/fixtures',
@@ -19,7 +20,9 @@ var CLIENT_TESTS_SETTINGS = {
     ],
     
     css: [ { src: 'style.css', path: './lib/style.css' } ],
-    configApp: require('./test/config-qunit-server-app')
+    configApp: require('./test/config-qunit-server-app'),
+    before: callbacks.before,
+    after: callbacks.after
 };
 
 var BROWSERS = [{
