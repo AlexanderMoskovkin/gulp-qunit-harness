@@ -19,7 +19,9 @@ export default function (qunitSettings, saucelabsSettings) {
         crossDomainPort: qunitSettings.crossDomainPort,
         scripts:         qunitSettings.scripts || [],
         css:             qunitSettings.css || [],
-        configApp:       qunitSettings.configApp || null
+        configApp:       qunitSettings.configApp || null,
+        before:          qunitSettings.before,
+        after:           qunitSettings.after
     };
 
     var tests        = [];
@@ -40,6 +42,12 @@ export default function (qunitSettings, saucelabsSettings) {
 
         if (typeof qunitSettings.configApp === 'function')
             qunitHarness.configApp(qunitSettings.configApp);
+
+        if (typeof qunitSettings.before === 'function')
+            qunitHarness.before(qunitSettings.before);
+
+        if (typeof qunitSettings.after === 'function')
+            qunitHarness.after(qunitSettings.after);
 
         qunitHarness.create();
 

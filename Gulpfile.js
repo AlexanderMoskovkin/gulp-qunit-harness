@@ -7,7 +7,7 @@ gulp.task('clean', function (cb) {
     del('lib', cb);
 });
 
-gulp.task('build', ['clean'], function () {
+gulp.task('build', ['clean', 'lint'], function () {
     return gulp
         .src('src/**/*.js')
         .pipe(babel())
