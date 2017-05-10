@@ -2,10 +2,10 @@
 
 [Gulp](https://github.com/gulpjs/gulp) plugin for [qunit-harness](https://github.com/AlexanderMoskovkin/qunit-harness)
 
-##Install
+## Install
 `$ npm install gulp-qunit-harness`
 
-##Usage
+## Usage
 ```js
 var qunitHarness = require('gulp-qunit-harness');
 var callbacks    = require('./test/callbacks');
