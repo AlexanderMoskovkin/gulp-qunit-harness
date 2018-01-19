@@ -12,7 +12,7 @@ function hang () {
     });
 }
 
-export default function (qunitSettings, saucelabsSettings) {
+export default function (qunitSettings, envSettings, runOpts = { cliMode: false }) {
     qunitSettings = {
         basePath:        qunitSettings.basePath || '',
         port:            qunitSettings.port,
@@ -51,8 +51,11 @@ export default function (qunitSettings, saucelabsSettings) {
 
         qunitHarness.create();
 
-        if (saucelabsSettings) {
-            qunitHarness.saucelabs(saucelabsSettings);
+        if (envSettings) {
+            if (runOpts.cliMode) qunitHarness.cli(envSettings);
+
+            else qunitHarness.saucelabs(envSettings);
+
             return await qunitHarness.run();
         }
 
